@@ -7,7 +7,7 @@ module.exports = {
   entry: {
     global: path.resolve(__dirname, "global.js"),
     index: path.resolve(__dirname, "index.js"),
-    // listProducts: "./list-products.js",
+    listProducts: "./list-products.js",
     // addProducts: "./add-products.js",
   },
   output: {
@@ -46,9 +46,9 @@ module.exports = {
         test: /\.(woff(2)?|eot|ttf)$/,
         type: "asset/resource", // Para copiar arquivos de fontes
         generator: {
-          filename: 'assets/fonts/[name][hash][ext][query]', // Colocando as fontes dentro de assets/fonts/
+          filename: 'assets/fonts/[name][ext]', // Colocando as fontes dentro de assets/fonts/
         },
-      },      
+      },
     ],
   },
   plugins: [
@@ -60,11 +60,11 @@ module.exports = {
       chunks: ["global", "index"],
       filename: "index.html",
     }),
-    // new HtmlWebpackPlugin({
-    //   template: "./list-products.html",
-    //   chunks: ["listProducts", "global"],
-    //   filename: "list-products.html",
-    // }),
+    new HtmlWebpackPlugin({
+      template: "./list-products.html",
+      chunks: ["listProducts", "global"],
+      filename: "list-products.html",
+    }),
     // new HtmlWebpackPlugin({
     //   template: "./add-products.html",
     //   chunks: ["addProducts", "global"],
